@@ -1,12 +1,13 @@
 package dev.backend.ecommercial.model.dto;
 
 import dev.backend.ecommercial.model.entity.OrderDetails;
+import dev.backend.ecommercial.model.entity.Product;
 import lombok.*;
 
 import java.math.BigDecimal;
 
-@Builder
 @Data
+@Builder
 public class OrderDetailDto {
     private Long orderDetailId;
     private Long orderId;

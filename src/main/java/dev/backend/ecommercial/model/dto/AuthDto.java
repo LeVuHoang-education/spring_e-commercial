@@ -16,7 +16,7 @@ public class AuthDto {
 
     public static AuthDto from(User user, String token, String refreshToken, String status, String result) {
         return AuthDto.builder()
-                .id(user.getId())
+                .id(user.getUserId())
                 .token(token)
                 .refreshToken(refreshToken)
                 .status(status)

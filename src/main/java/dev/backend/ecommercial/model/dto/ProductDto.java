@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductDto {
     private Long productId;
     private String productName;
@@ -15,6 +17,7 @@ public class ProductDto {
     private String productImage;
     private int productQuantity;
     private Long categoryId;
+    private Boolean active;
 
     public static ProductDto from (Product product) {
         return ProductDto.builder()
@@ -24,7 +27,8 @@ public class ProductDto {
                 .productDescription(product.getProductDescription())
                 .productImage(product.getProductImage())
                 .productQuantity(product.getProductQuantity())
-                .categoryId(product.getCategory().getCategoryId())
+                .categoryId(product.getCategory() != null ? product.getCategory().getCategoryId() : null)
+                .active(product.getActive())
                 .build();
     }
 }

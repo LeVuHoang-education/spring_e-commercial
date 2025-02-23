@@ -18,6 +18,7 @@ public class Orders {
     private User user;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status orderStatus;
 
     @Column(nullable = false)

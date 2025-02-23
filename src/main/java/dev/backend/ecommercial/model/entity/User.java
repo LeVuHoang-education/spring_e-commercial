@@ -1,14 +1,18 @@
 package dev.backend.ecommercial.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "users")
 public class User {
     @Id
@@ -33,9 +37,15 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Address> address;
 
-    public Long getId() {
-        return userId;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Cart> carts;
+
+    @Override
+    public String toString() {
+        return "User{id=" + userId + ", email=" + email + ", userName=" + userName + "}";
     }
+
 }

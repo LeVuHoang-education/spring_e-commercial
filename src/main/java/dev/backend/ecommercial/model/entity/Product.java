@@ -32,4 +32,13 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @Column(name = "active", nullable = false)
+    private Boolean active = true;
+
+    @PrePersist
+    public void prePersist() {
+        if (active == null) {
+            active = true;
+        }
+    }
 }

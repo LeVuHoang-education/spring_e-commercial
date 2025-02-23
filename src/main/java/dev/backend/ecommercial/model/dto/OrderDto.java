@@ -19,9 +19,13 @@ public class OrderDto {
                 .orderId(order.getOrderId())
                 .userId(order.getUser().getUserId())
                 .userName(order.getUser().getUserName())
-                .orderStatus(order.getOrderStatus())
+                .orderStatus(String.valueOf(order.getOrderStatus()))
                 .paymentMethod(order.getPaymentMethod())
                 .orderTotal(order.getOrderTotal().doubleValue())
                 .build();
+    }
+
+    public static OrderDto from(Orders savedOrder) {
+        return null;
     }
 }

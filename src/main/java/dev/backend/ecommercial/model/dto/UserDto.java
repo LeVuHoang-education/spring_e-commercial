@@ -5,6 +5,8 @@ import lombok.*;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto {
     private Long id;
     private String username;
@@ -12,9 +14,17 @@ public class UserDto {
     private String phone;
     private String roleName;
 
+    public UserDto (Long id,String username, String email, String phone) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.phone = phone;
+
+    }
+
     public static UserDto to(User user) {
         return UserDto.builder()
-                .id(user.getId())
+                .id(user.getUserId())
                 .email(user.getEmail())
                 .username(user.getUserName())
                 .phone(user.getPhone())

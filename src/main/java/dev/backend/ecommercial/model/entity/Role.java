@@ -1,14 +1,15 @@
 package dev.backend.ecommercial.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -18,11 +19,17 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long RoleId;
+    private Long roleId;
 
     @Column( unique = true)
     private String name;
 
     @OneToMany(mappedBy = "role")
+    @JsonIgnore
     private List<User> users;
+
+    @Override
+    public String toString() {
+        return "Role{id=" + roleId + ", name=" + name + "}";
+    }
 }

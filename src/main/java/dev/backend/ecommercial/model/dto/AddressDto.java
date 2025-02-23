@@ -5,9 +5,9 @@ import dev.backend.ecommercial.model.entity.User;
 import lombok.*;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AddressDto {
     private Long addressId;
     private String streetLine;

@@ -17,7 +17,7 @@ public class OrderDetails {
     @JoinColumn(name = "order_id", nullable = false)
     private Orders order;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
